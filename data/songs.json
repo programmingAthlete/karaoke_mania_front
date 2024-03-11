@@ -1,0 +1,32 @@
+[
+    {
+        "artist": "artist1",
+        "song": "song1", 
+        "users": [""]
+    },
+    {
+        "artist": "artist2",
+        "song": "song2",
+        "users": [""]
+    },
+    {
+        "artist": "artist3",
+        "song": "song3",
+        "users": [""] 
+    },
+    {
+        "artist": "artist4",
+        "song": "song4",
+        "users": ["user1"] 
+    },
+    {
+        "artist": "artist5",
+        "song": "song5",
+        "users": [""]
+    },
+    {
+        "artist": "artist6",
+        "song": "song6",
+        "users": [""] 
+    }
+]

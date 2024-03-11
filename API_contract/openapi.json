@@ -1,0 +1,991 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "FastAPI",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/api/payload/decrypt": {
+            "post": {
+                "summary": "Decrypt Payload",
+                "operationId": "decrypt_payload_api_payload_decrypt_post",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "H",
+                            "type": "integer"
+                        },
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Nonce",
+                            "type": "string"
+                        },
+                        "name": "nonce",
+                        "in": "query"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/DecryptPayloadRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DecryptPayloadResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/public_vars": {
+            "get": {
+                "summary": "Get Public Vars",
+                "operationId": "get_public_vars_api_public_vars_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetPublicVarsResonse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/part_key": {
+            "get": {
+                "summary": "Get Public Vars",
+                "operationId": "get_public_vars_api_part_key_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetPartKeyResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/admin": {
+            "get": {
+                "summary": "Get Admin Email",
+                "operationId": "get_admin_email_api_users_admin_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "H",
+                            "type": "integer"
+                        },
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Nonce",
+                            "type": "string"
+                        },
+                        "name": "nonce",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Authorization",
+                            "type": "string"
+                        },
+                        "name": "authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BaseResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "put": {
+                "summary": "Update Email",
+                "operationId": "update_email_api_users_put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "H",
+                            "type": "integer"
+                        },
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Nonce",
+                            "type": "string"
+                        },
+                        "name": "nonce",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Authorization",
+                            "type": "string"
+                        },
+                        "name": "authorization",
+                        "in": "header"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UpdateUserEmailRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/songs/load/{filename}": {
+            "get": {
+                "summary": "Get Songs Upload Link",
+                "operationId": "get_songs_upload_link_api_songs_load__filename__get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Filename",
+                            "type": "string"
+                        },
+                        "name": "filename",
+                        "in": "path"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "H",
+                            "type": "integer"
+                        },
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Nonce",
+                            "type": "string"
+                        },
+                        "name": "nonce",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Authorization",
+                            "type": "string"
+                        },
+                        "name": "authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BaseResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/songs": {
+            "get": {
+                "summary": "Get Songs",
+                "operationId": "get_songs_api_songs_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "H",
+                            "type": "integer"
+                        },
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Nonce",
+                            "type": "string"
+                        },
+                        "name": "nonce",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Search",
+                            "type": "string"
+                        },
+                        "name": "search",
+                        "in": "query"
+                    },
+                    {
+                        "required": false,
+                        "schema": {
+                            "title": "Offset",
+                            "type": "integer",
+                            "default": 0
+                        },
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Authorization",
+                            "type": "string"
+                        },
+                        "name": "authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetSongsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "Select Songs",
+                "operationId": "select_songs_api_songs_put",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "H",
+                            "type": "integer"
+                        },
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Nonce",
+                            "type": "string"
+                        },
+                        "name": "nonce",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Authorization",
+                            "type": "string"
+                        },
+                        "name": "authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful Response"
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/songs/{song_id}": {
+            "delete": {
+                "summary": "Delete Song",
+                "operationId": "delete_song_api_songs__song_id__delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Song Id",
+                            "type": "integer"
+                        },
+                        "name": "song_id",
+                        "in": "path"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "H",
+                            "type": "integer"
+                        },
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Nonce",
+                            "type": "string"
+                        },
+                        "name": "nonce",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Authorization",
+                            "type": "string"
+                        },
+                        "name": "authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful Response"
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/songs/me": {
+            "get": {
+                "summary": "Get Songs",
+                "operationId": "get_songs_api_songs_me_get",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "H",
+                            "type": "integer"
+                        },
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Nonce",
+                            "type": "string"
+                        },
+                        "name": "nonce",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Authorization",
+                            "type": "string"
+                        },
+                        "name": "authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetSongsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/queues": {
+            "get": {
+                "summary": "Get Queue",
+                "operationId": "get_queue_api_queues_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetQueueResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/queues/done": {
+            "patch": {
+                "summary": "Move Queue Song Done",
+                "operationId": "move_queue_song_done_api_queues_done_patch",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "H",
+                            "type": "integer"
+                        },
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Nonce",
+                            "type": "string"
+                        },
+                        "name": "nonce",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Authorization",
+                            "type": "string"
+                        },
+                        "name": "authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/queues/delete": {
+            "delete": {
+                "summary": "Delete Queue Item",
+                "operationId": "delete_queue_item_api_queues_delete_delete",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "H",
+                            "type": "integer"
+                        },
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Nonce",
+                            "type": "string"
+                        },
+                        "name": "nonce",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Authorization",
+                            "type": "string"
+                        },
+                        "name": "authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful Response"
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/queues/re-push": {
+            "patch": {
+                "summary": "Re Push Song To Queue",
+                "operationId": "re_push_song_to_queue_api_queues_re_push_patch",
+                "parameters": [
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "H",
+                            "type": "integer"
+                        },
+                        "name": "h",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Nonce",
+                            "type": "string"
+                        },
+                        "name": "nonce",
+                        "in": "query"
+                    },
+                    {
+                        "required": true,
+                        "schema": {
+                            "title": "Authorization",
+                            "type": "string"
+                        },
+                        "name": "authorization",
+                        "in": "header"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful Response"
+                    },
+                    "422": {
+                        "description": "Validation Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/HTTPValidationError"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/karaoke/load_dummy": {
+            "post": {
+                "summary": "Karaoke Load Dummy Db",
+                "operationId": "karaoke_load_dummy_db_api_karaoke_load_dummy_post",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/karaoke/drop_dummy": {
+            "post": {
+                "summary": "Karaoke Load Dummy Db",
+                "operationId": "karaoke_load_dummy_db_api_karaoke_drop_dummy_post",
+                "responses": {
+                    "201": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BaseResponse": {
+                "title": "BaseResponse",
+                "required": [
+                    "payload"
+                ],
+                "type": "object",
+                "properties": {
+                    "payload": {
+                        "title": "Payload",
+                        "type": "string",
+                        "format": "binary"
+                    }
+                }
+            },
+            "DecryptPayloadRequest": {
+                "title": "DecryptPayloadRequest",
+                "required": [
+                    "payload"
+                ],
+                "type": "object",
+                "properties": {
+                    "payload": {
+                        "title": "Payload",
+                        "type": "string"
+                    }
+                }
+            },
+            "DecryptPayloadResponse": {
+                "title": "DecryptPayloadResponse",
+                "required": [
+                    "payload"
+                ],
+                "type": "object",
+                "properties": {
+                    "payload": {
+                        "title": "Payload",
+                        "type": "string"
+                    }
+                }
+            },
+            "GetPartKeyResponse": {
+                "title": "GetPartKeyResponse",
+                "required": [
+                    "g",
+                    "n",
+                    "part_key",
+                    "nonce"
+                ],
+                "type": "object",
+                "properties": {
+                    "g": {
+                        "title": "G",
+                        "type": "integer"
+                    },
+                    "n": {
+                        "title": "N",
+                        "type": "integer"
+                    },
+                    "part_key": {
+                        "title": "Part Key",
+                        "type": "integer"
+                    },
+                    "nonce": {
+                        "title": "Nonce",
+                        "type": "string"
+                    }
+                }
+            },
+            "GetPublicVarsResonse": {
+                "title": "GetPublicVarsResonse",
+                "required": [
+                    "g",
+                    "n"
+                ],
+                "type": "object",
+                "properties": {
+                    "g": {
+                        "title": "G",
+                        "type": "integer"
+                    },
+                    "n": {
+                        "title": "N",
+                        "type": "integer"
+                    }
+                }
+            },
+            "GetQueueResponse": {
+                "title": "GetQueueResponse",
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/GetQueueSongResponse2"
+                }
+            },
+            "GetQueueSongResponse2": {
+                "title": "GetQueueSongResponse2",
+                "required": [
+                    "inc_index",
+                    "song_id",
+                    "users",
+                    "song_name",
+                    "artist_name",
+                    "done"
+                ],
+                "type": "object",
+                "properties": {
+                    "inc_index": {
+                        "title": "Inc Index",
+                        "type": "integer"
+                    },
+                    "song_id": {
+                        "title": "Song Id",
+                        "type": "integer"
+                    },
+                    "users": {
+                        "title": "Users",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SongPersonResponse"
+                        }
+                    },
+                    "song_name": {
+                        "title": "Song Name",
+                        "type": "string"
+                    },
+                    "artist_name": {
+                        "title": "Artist Name",
+                        "type": "string"
+                    },
+                    "done": {
+                        "title": "Done",
+                        "type": "boolean"
+                    }
+                }
+            },
+            "GetSongResponse": {
+                "title": "GetSongResponse",
+                "required": [
+                    "id",
+                    "song_name",
+                    "artist_name",
+                    "users"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "Id",
+                        "type": "integer"
+                    },
+                    "selected": {
+                        "title": "Selected",
+                        "type": "boolean",
+                        "default": false
+                    },
+                    "song_name": {
+                        "title": "Song Name",
+                        "type": "string"
+                    },
+                    "artist_name": {
+                        "title": "Artist Name",
+                        "type": "string"
+                    },
+                    "users": {
+                        "title": "Users",
+                        "type": "string"
+                    }
+                }
+            },
+            "GetSongsResponse": {
+                "title": "GetSongsResponse",
+                "type": "array",
+                "items": {
+                    "$ref": "#/components/schemas/GetSongResponse"
+                }
+            },
+            "HTTPValidationError": {
+                "title": "HTTPValidationError",
+                "type": "object",
+                "properties": {
+                    "detail": {
+                        "title": "Detail",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ValidationError"
+                        }
+                    }
+                }
+            },
+            "SongPersonResponse": {
+                "title": "SongPersonResponse",
+                "required": [
+                    "email",
+                    "person_id"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "title": "Email",
+                        "type": "string"
+                    },
+                    "person_id": {
+                        "title": "Person Id",
+                        "type": "integer"
+                    }
+                }
+            },
+            "UpdateUserEmailRequest": {
+                "title": "UpdateUserEmailRequest",
+                "required": [
+                    "email"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "title": "Email",
+                        "type": "string"
+                    }
+                }
+            },
+            "ValidationError": {
+                "title": "ValidationError",
+                "required": [
+                    "loc",
+                    "msg",
+                    "type"
+                ],
+                "type": "object",
+                "properties": {
+                    "loc": {
+                        "title": "Location",
+                        "type": "array",
+                        "items": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "type": "integer"
+                                }
+                            ]
+                        }
+                    },
+                    "msg": {
+                        "title": "Message",
+                        "type": "string"
+                    },
+                    "type": {
+                        "title": "Error Type",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
